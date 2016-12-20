@@ -1,33 +1,37 @@
 #include<stdio.h>
+#include<stdbool.h>
+
+bool ispalindrome(long n) {
+  int remainder=0,o=0,r=0;
+
+  o=n;
+  while (n!=0) {
+    remainder=n%10;
+    r=r*10+remainder;
+    n /=10;
+  }
+    if(o==r) {
+      return true;
+    }
+    return false;
+}
 
 int main() {
-  int i=0,j=0,product=0;
-  int palindrome=0;
-  int max=0;
-  int remainder,o_pro;
-  int r_pro=0;
+  long product=0;
+  long palindrome=0,max_pal=0;
 
-  for(i=100;i<999;i++) {
-    for (j=100;j<999;j++) {
+  for(long i=100;i<=999;i++) {
+    for (long j=100;j<=999;j++) {
       product = i * j;
-    
-      o_pro=product;
-
-      while(product!=0) {
-        remainder=product%10;
-        r_pro=r_pro*10;
-        product /=10;
-      }
-
-      if (o_pro==r_pro) {
+      if (ispalindrome(product)) {
         palindrome=product;
-      }
-
-      if (palindrome %10 == 9) {
-        max=palindrome;
+        if(palindrome>max_pal) {
+         max_pal=palindrome;
+       }
       }
     }
   }
-  printf("Largest palindrome number made from the product of two 3-digit numbers is %d",max);
+  
+  printf("Largest palindrome number made from the product of two 3-digit numbers is %ld",max_pal);
   return 0;
 }
