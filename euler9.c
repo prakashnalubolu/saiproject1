@@ -3,7 +3,6 @@
 int main() {
   
   long pro=0;
-  int a,b,c;
 
   for(int a=1;a<1000;a++) {
     for (int b=2;b<1000;b++) {
